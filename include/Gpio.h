@@ -71,7 +71,35 @@ namespace gpio
 			};
 		}
 
+		namespace outputType
+		{
+			enum _outputType
+			{
+				PUSH_PULL,
+				OPEN_DRAIN
+			};
+		}
 
+		namespace outputSpeed
+		{
+			enum _outputSpeed
+			{
+				LOW = 0x00,
+				MEDIUM = 0x01,
+				HIGH = 0x02,
+				VERY_HIGH = 0x03
+			};
+		}
+
+		namespace pullResistor
+		{
+			enum _pullResistor
+			{
+				NO_RESISTOR = 0x00,
+				PULL_UP = 0x01,
+				PULL_DOWN = 0x02
+			};
+		}
 	}
 
 
@@ -81,9 +109,17 @@ namespace gpio
 	{
 	public:
 
-		static inline void setMode( config::mode::_mode pMode );
+		static void setMode( config::mode::_mode pMode );
+		static void setOutputType( config::outputType::_outputType pOType );
+		static void setOutputSpeed( config::outputSpeed::_outputSpeed pOSpeed );
+		static void setPullResistor( config::pullResistor::_pullResistor pPullResistor );
+		static u32 getPortData();
+		static bool isHigh();
+		static bool isLow();
 
-		
+		static inline void toggle();
+		static inline void setLow();
+		static inline void setHigh();
 	};
 
 
@@ -96,6 +132,15 @@ namespace gpio
 		~Pin();
 
 		void setMode( config::mode::_mode pMode );
+		void setOutputType( config::outputType::_outputType pOType );
+		void setOutputSpeed( config::outputSpeed::_outputSpeed pOSpeed );
+		void setPullResistor( config::pullResistor::_pullResistor pPullResistor );
+		u32 getPortData();
+		bool isHigh();
+		bool isLow();
+		void toggle();
+		void setLow();
+		void setHigh();
 
 	private:
 		options::port::_port m_port;
@@ -109,10 +154,46 @@ namespace gpio
 		void pinSetMode( options::port::_port pPort,
 			   			 options::pin::_pin pPin,
 			   			 config::mode::_mode pMode );
+
+		void pinSetOutputType( options::port::_port pPort,
+			   			 	   options::pin::_pin pPin,
+			   			 	   config::outputType::_outputType pOType );
+
+		void pinSetOutputSpeed( options::port::_port pPort,
+			   			 		options::pin::_pin pPin,
+			   			 		config::outputSpeed::_outputSpeed pOSpeed );
+
+		void pinSetPullResistor( options::port::_port pPort,
+			   			 		 options::pin::_pin pPin,
+			   			 		 config::outputSpeed::_outputSpeed pPullResistor );
+
+		u32 portGetPortData( options::port::_port pPort );
+
+		bool pinIsHigh( options::port::_port pPort,
+						options::pin::_pin pPin );
+
+		bool pinIsLow( options::port::_port pPort,
+					   options::pin::_pin pPin );
+
+		void pinToggle( options::port::_port pPort,
+					   options::pin::_pin pPin );
+
+		void pinSetLow( options::port::_port pPort,
+					    options::pin::_pin pPin );
+
+		void pinSetHigh( options::port::_port pPort,
+					     options::pin::_pin pPin );
 	}
 
 
+
+
 }
+
+typedef gpio::TPin<gpio::options::port::PORTD,gpio::options::pin::PIN15> PD12;
+typedef gpio::TPin<gpio::options::port::PORTD,gpio::options::pin::PIN15> PD13;
+typedef gpio::TPin<gpio::options::port::PORTD,gpio::options::pin::PIN15> PD14;
+typedef gpio::TPin<gpio::options::port::PORTD,gpio::options::pin::PIN15> PD15;
 
 
 #include "../src/GpioImplement.h"
