@@ -61,13 +61,13 @@ namespace gpio
 	template<options::port::_port pPort,options::pin::_pin pPin>
 	void TPin<pPort,pPin>::setLow()
 	{
-		reinterpret_cast<gpioMap::MemoryMap*>( pPort )->BSRR = ( 1 << ( pPin + 16 ) );
+		reinterpret_cast<gpioMap::MemoryMap*>( pPort )->BSRR |= ( 1 << ( pPin + 16 ) );
 	}
 
 	template<options::port::_port pPort,options::pin::_pin pPin>
 	void TPin<pPort,pPin>::setHigh()
 	{
-		reinterpret_cast<gpioMap::MemoryMap*>( pPort )->BSRR = ( 1 << pPin );
+		reinterpret_cast<gpioMap::MemoryMap*>( pPort )->BSRR |= ( 1 << pPin );
 	}
 
 	template<options::port::_port pPort,options::pin::_pin pPin>

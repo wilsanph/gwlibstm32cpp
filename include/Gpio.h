@@ -190,9 +190,9 @@ namespace gpio
 
 }
 
-typedef gpio::TPin<gpio::options::port::PORTD,gpio::options::pin::PIN15> PD12;
-typedef gpio::TPin<gpio::options::port::PORTD,gpio::options::pin::PIN15> PD13;
-typedef gpio::TPin<gpio::options::port::PORTD,gpio::options::pin::PIN15> PD14;
+typedef gpio::TPin<gpio::options::port::PORTD,gpio::options::pin::PIN12> PD12;
+typedef gpio::TPin<gpio::options::port::PORTD,gpio::options::pin::PIN13> PD13;
+typedef gpio::TPin<gpio::options::port::PORTD,gpio::options::pin::PIN14> PD14;
 typedef gpio::TPin<gpio::options::port::PORTD,gpio::options::pin::PIN15> PD15;
 
 
