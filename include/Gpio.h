@@ -102,8 +102,6 @@ namespace gpio
 		}
 	}
 
-
-
 	template<options::port::_port pPort,options::pin::_pin pPin>
 	class TPin
 	{
