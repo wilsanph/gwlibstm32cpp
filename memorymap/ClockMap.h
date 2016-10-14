@@ -122,7 +122,7 @@ namespace clockMap
 	struct RCC_AHB2ENR_bits
 	{
 		u32 DCMIEN		: 1;
-		u32 reserved1 	: 3;
+		u32 reserved2 	: 3;
 		u32 CRYPEN		: 1;
 		u32 HASHEN		: 1;
 		u32 RNGEN		: 1;
